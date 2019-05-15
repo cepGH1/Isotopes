@@ -5,6 +5,8 @@
  */
 package isotopes1;
 
+import java.io.File;
+
 /**
  *
  * @author user
@@ -37,6 +39,13 @@ public class IGui1 extends javax.swing.JFrame {
          }
     }
     
+      private void showTableEntry(String selectedElement){
+        String filePath = "./images/" + selectedElement + ".jpg";
+        System.out.println(filePath);
+        File myImage = new File(filePath);
+        cep_canvas21.loadImage(myImage);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,6 +63,7 @@ public class IGui1 extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -117,11 +127,12 @@ public class IGui1 extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(false);
         jTable1.setSelectionBackground(new java.awt.Color(255, 204, 0));
         jTable1.setSelectionForeground(new java.awt.Color(51, 0, 51));
         jTable1.setShowGrid(true);
         jScrollPane1.setViewportView(jTable1);
+
+        jButton4.setText("Answer button");
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -158,7 +169,9 @@ public class IGui1 extends javax.swing.JFrame {
                 .addGap(64, 64, 64))
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -179,7 +192,9 @@ public class IGui1 extends javax.swing.JFrame {
                                 .addComponent(cep_canvas21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(28, 28, 28)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(68, 68, 68)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(143, 143, 143))
         );
@@ -192,6 +207,7 @@ public class IGui1 extends javax.swing.JFrame {
        jTextField1.setText(myElementString);
        myElementIsotopes = myPeriodicTable.getIsotopeMasses();
        populateTable();
+       showTableEntry(myElementString);
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -246,6 +262,7 @@ public class IGui1 extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
